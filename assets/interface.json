@@ -3,21 +3,19 @@
         {
             "name": "安卓端",
             "type": "Adb"
-        },
-        {
-            "name": "桌面端",
-            "type": "Win32",
-            "win32": {
-                "class_regex": ".*",
-                "window_regex": "Visual Studio"
-            }
         }
     ],
     "resource": [
         {
+            "name": "知到",
+            "path": [
+                "{PROJECT_DIR}/resource/zhidao"
+            ]
+        },
+        {
             "name": "测试资源",
             "path": [
-                "{PROJECT_DIR}/resource/base"
+                "{PROJECT_DIR}/resource/testTask"
             ]
         }
     ],
@@ -29,8 +27,8 @@
     },
     "task": [
         {
-            "name": "点击安卓测试",
-            "entry": "点击关于"
+            "name": "知到刷课",
+            "entry": "启动知到"
         }
     ]
 }

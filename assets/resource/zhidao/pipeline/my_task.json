@@ -1,0 +1,117 @@
+{
+    "启动知到": {
+        "action": "StartApp",
+        "package": "com.able.wisdomtree",
+        "next": [
+            "点击近代史课程",
+            "点击学习栏"
+        ]
+    },
+    "点击学习栏": {
+        "recognition": "OCR",
+        "expected": "学习",
+        "action": "Click",
+        "next": [
+            "点击近代史课程"
+        ]
+    },
+    "点击近代史课程": {
+        "recognition": "TemplateMatch",
+        "template": "近代史课程入口.png",
+        "action": "Click",
+        "next": [
+            "点击继续学习",
+            "判断题打断"
+        ],
+        "on_error": []
+    },
+    "点击继续学习": {
+        "recognition": "OCR",
+        "expected": "继续学习",
+        "action": "Click",
+        "next": [
+            "判断题打断"
+        ]
+    },
+    "尝试全屏": {
+        "recognition": "TemplateMatch",
+        "template": "视频全屏键.png",
+        "action": "Click",
+        "next": [
+            "检查是否为1.5倍",
+            "切换倍速1.25"
+        ]
+    },
+    "检查是否为1.5倍": {
+        "recognition": "OCR",
+        "expected": "1.5x",
+        "next": [
+            "退出全屏"
+        ]
+    },
+    "切换倍速1.25": {
+        "recognition": "OCR",
+        "expected": "1.0x",
+        "action": "Click",
+        "next": [
+            "切换倍速1.5"
+        ]
+    },
+    "切换倍速1.5": {
+        "recognition": "OCR",
+        "expected": "1.25x",
+        "action": "Click",
+        "next": [
+            "退出全屏"
+        ]
+    },
+    "退出全屏": {
+        "recognition": "TemplateMatch",
+        "template": "退出全屏键.png",
+        "action": "Click",
+        "next": [
+            "判断题打断"
+        ]
+    },
+    "判断题打断": {
+        "recognition": "OCR",
+        "expected": "判断题",
+        "timeout": 18000000,
+        "rate_limit": 5000,
+        "next": [
+            "点击判断题A选项(图片)",
+            "点击判断题A选项(文字)"
+        ],
+        "on_error": [
+            "退出知到"
+        ]
+    },
+    "点击判断题A选项(图片)": {
+        "recognition": "TemplateMatch",
+        "template": "判断题A选项.png",
+        "action": "Click",
+        "next": [
+            "关闭判断题"
+        ]
+    },
+    "点击判断题A选项(文字)": {
+        "recognition": "OCR",
+        "expected": "A",
+        "action": "Click",
+        "next": [
+            "关闭判断题"
+        ]
+    },
+    "关闭判断题": {
+        "recognition": "TemplateMatch",
+        "template": "判断题关闭键.png",
+        "action": "Click",
+        "next": [
+            "判断题打断"
+        ]
+    },
+    "退出知到": {
+        "action": "StopApp",
+        "package": "com.able.wisdomtree"
+    }
+}
