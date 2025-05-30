@@ -22,14 +22,13 @@
         "next": [
             "点击继续学习",
             "判断题打断"
-        ],
-        "on_error": []
+        ]
     },
     "点击继续学习": {
         "recognition": "OCR",
         "expected": "继续学习",
         "action": "Click",
-        "next": [
+        "on_error": [
             "判断题打断"
         ]
     },
