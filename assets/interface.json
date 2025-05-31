@@ -11,12 +11,6 @@
             "path": [
                 "{PROJECT_DIR}/resource/zhidao"
             ]
-        },
-        {
-            "name": "测试资源",
-            "path": [
-                "{PROJECT_DIR}/resource/testTask"
-            ]
         }
     ],
     "agent": {

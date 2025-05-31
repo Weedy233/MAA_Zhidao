@@ -2,11 +2,32 @@
     "启动知到": {
         "action": "StartApp",
         "package": "com.able.wisdomtree",
+        "post_delay": 4000,
         "next": [
-            "点击近代史课程",
+            "更新打断",
+            "点击学习栏"
+        ],
+        "on_error": [
+            "退出知到"
+        ]
+    },
+    "更新打断": {
+        "recognition": "OCR",
+        "expected": "APP更新啦",
+        "next": [
+            "关闭更新"
+        ]
+    },
+    "关闭更新": {
+        "recognition": "TemplateMatch",
+        "template": "关闭更新键.png",
+        "action": "Click",
+        "next": [
             "点击学习栏"
         ]
     },
+
+
     "点击学习栏": {
         "recognition": "OCR",
         "expected": "学习",
@@ -19,6 +40,7 @@
         "recognition": "TemplateMatch",
         "template": "近代史课程入口.png",
         "action": "Click",
+        "target": true,
         "next": [
             "点击继续学习",
             "判断题打断"
@@ -28,10 +50,14 @@
         "recognition": "OCR",
         "expected": "继续学习",
         "action": "Click",
-        "on_error": [
+        "rate_limit": 5000,
+        "timeout": 18000000,
+        "next": [
             "判断题打断"
         ]
     },
+
+
     "尝试全屏": {
         "recognition": "TemplateMatch",
         "template": "视频全屏键.png",
@@ -72,17 +98,14 @@
             "判断题打断"
         ]
     },
+
+    
     "判断题打断": {
         "recognition": "OCR",
         "expected": "判断题",
-        "timeout": 18000000,
-        "rate_limit": 5000,
         "next": [
-            "点击判断题A选项(图片)",
-            "点击判断题A选项(文字)"
-        ],
-        "on_error": [
-            "退出知到"
+            "点击判断题A选项(文字)",
+            "点击判断题A选项(图片)"
         ]
     },
     "点击判断题A选项(图片)": {
@@ -105,10 +128,14 @@
         "recognition": "TemplateMatch",
         "template": "判断题关闭键.png",
         "action": "Click",
+        "timeout": 1800000,
+        "rate_limit": 5000,
         "next": [
             "判断题打断"
         ]
     },
+
+
     "退出知到": {
         "action": "StopApp",
         "package": "com.able.wisdomtree"
