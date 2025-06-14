@@ -105,7 +105,8 @@
         "expected": "判断题",
         "next": [
             "点击判断题A选项(文字)",
-            "点击判断题A选项(图片)"
+            "点击判断题A选项(图片)",
+            "点击判断题A选项(红图片)"
         ]
     },
     "点击判断题A选项(图片)": {
@@ -119,6 +120,14 @@
     "点击判断题A选项(文字)": {
         "recognition": "OCR",
         "expected": "A",
+        "action": "Click",
+        "next": [
+            "关闭判断题"
+        ]
+    },
+    "点击判断题A选项(红图片)": {
+        "recognition": "TemplateMatch",
+        "template": "判断题A选项（红）.png",
         "action": "Click",
         "next": [
             "关闭判断题"
