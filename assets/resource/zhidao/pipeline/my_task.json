@@ -104,33 +104,46 @@
         "recognition": "OCR",
         "expected": "判断题",
         "next": [
-            "点击判断题A选项(文字)",
-            "点击判断题A选项(图片)",
+            "点击判断题A选项(白图片)",
+            "点击判断题A选项(绿图片)",
             "点击判断题A选项(红图片)"
         ]
     },
-    "点击判断题A选项(图片)": {
+    "点击判断题A选项(白图片)": {
         "recognition": "TemplateMatch",
         "template": "判断题A选项.png",
         "action": "Click",
         "next": [
+            "检测下一题",
             "关闭判断题"
         ]
     },
-    "点击判断题A选项(文字)": {
-        "recognition": "OCR",
-        "expected": "A",
+    "点击判断题A选项(绿图片)":{
+        "recognition": "TemplateMatch",
+        "template": "判断题A选项(绿).png",
         "action": "Click",
         "next": [
+            "检测下一题",
             "关闭判断题"
         ]
     },
     "点击判断题A选项(红图片)": {
         "recognition": "TemplateMatch",
-        "template": "判断题A选项（红）.png",
+        "template": "判断题A选项(红).png",
         "action": "Click",
         "next": [
+            "检测下一题",
             "关闭判断题"
+        ]
+    },
+    "检测下一题": {
+        "recognition": "TemplateMatch",
+        "roi" : [385,1049,78,44],
+        "threshold": 0.95,
+        "action": "Click",
+        "template": "下一题按钮(绿).png",
+        "next": [
+            "判断题打断"
         ]
     },
     "关闭判断题": {
@@ -141,6 +154,18 @@
         "rate_limit": 5000,
         "next": [
             "判断题打断"
+        ]
+    },
+
+    "验证码打断": {
+        "recognition": "OCR",
+        "expected": "请完成安全验证",
+        "action": "Command",
+        "exec": "Start-Process",
+        "args": [
+            "powershell",
+            "-ArgumentList",
+            "\"-NoExit\", \"-Command `\"Write-Host '请完成安全验证'`\"\""
         ]
     },
 
